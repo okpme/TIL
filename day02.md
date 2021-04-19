@@ -1,3 +1,21 @@
 # TIL
 
+* day01 연습
 * https://blog.naver.com/ksyooon0718/222270056411
+* https://jhoplin7259.tistory.com/67
+* https://duzi077.tistory.com/127
+
+
+
+* 바탕화면에서 bash를 키면 바탕화면에서 시작
+  * 폴더안에서 bash를 키면 폴더안에서 시작함
+* 
+
+```bash
+# 초기화(init)후에 add, commit, push
+$git init
+$git add
+$git commmit -m '제목'
+$git push -u origin master
+```
+
