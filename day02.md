@@ -9,7 +9,9 @@
 
 * 바탕화면에서 bash를 키면 바탕화면에서 시작
   * 폴더안에서 bash를 키면 폴더안에서 시작함
-* 
+* commit시에 확장(?) 이름을 다르게하여  push 하면??
+  *  
+* 수정이 안되어 있으면 nothing to commit이 뜸
 
 ```bash
 # 초기화(init)후에 add, commit, push
