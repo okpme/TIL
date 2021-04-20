@@ -44,6 +44,7 @@ $ git log --oneline -1
 #-u 명령어는 upstream의 약자로, 이후에는 git push만 입력해도 된다.
 # 처음에 업스트림 브랜치를 지정해주는 과정!
 $git push -u origin master
+$git push -u origin +master #(강제)
 
 #해당하는 주소의 깃 원격 저장소를 로컬(자기 컴퓨터) 저장소와 연결하는 명령어 (한번만치면 된다)
 $ git remote add origin https://github.com/{유저이름}/{레포이름}
