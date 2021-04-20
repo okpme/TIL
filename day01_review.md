@@ -62,8 +62,8 @@ $git push origin +master
 
 ### 질문
 
-- [ ] 파일을 삭제시 status 확인하면 deleted: 라고 뜸. bash에서 정리하려면??
+- [x] 파일을 삭제시 status 확인하면 deleted: 라고 뜸. bash에서 정리하려면??
 
-- [ ] 가끔 엔터후 작동없이 다시 내려갈때가 있는데 해결방법?
+- [x] 가끔 엔터후 작동없이 다시 내려갈때가 있는데 해결방법?
 - [ ] push -u origin master의 의미? (별거 아니고 중요하지 않다면 그냥 넘어감)
 
