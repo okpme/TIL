@@ -5,6 +5,27 @@
 + 자료구조와 알고리즘 (하루에 하나씩 이해하지못해도 노출시키기)
 + 디자인패턴 (흐름과 방식등만 알아가기)
 + 언어 (최우선)
++ https://hyunseob.github.io/2016/02/21/how-to-become-a-great-frontend-engineer/
+
+
+
+## 자료구조(data structure)
+
+데이터를 효과적으로 관리하기 위해 구조화 하는것
+
+array / queue / stack / linked list / hash table / tree / heap
+
+|             | 장점                                   | 단점                                    |
+| ----------- | -------------------------------------- | --------------------------------------- |
+| array       | 인덱스로 빠른 접근                     | 추가, 삭제                              |
+| queue       |                                        |                                         |
+| stack       | 단순, 속도                             | 최대개수 지정, 저장공간 낭비, 공간 확보 |
+| linked list | 배열의 단점을 극복                     | 저장공간 효율 낮음. 속도 느림,  재구성  |
+| hash table  | key/value로 빠른 속도, 데이터확인 용이 | 저장공간 효율 낮음, 충돌                |
+| tree        |                                        |                                         |
+| heap        |                                        |                                         |
+
+
 
 
 ## 모던 JavaScript 튜토리얼 (기본)
@@ -67,7 +88,7 @@ alert( `hello ${name}` ); // hello Ilya
 
 ### alert, prompt, confirm
 
-`alert`
+`alert` 매서드는 값을 반환하지는 않는다.  = `undefined`
 
 `prompt` 
 
@@ -209,4 +230,148 @@ alert(+a + +b); // 3
 ```
 
 
+
+### 비교 연산자
+
+#### 불린형으로 반환  (문자열은 항상 true)
+
+`	==` 은 형변환이 없음
+
+#### 문자열 비교 (유니코드 순)
+
+#### 자료형이 다르면 숫자형으로 변환 >>  0과 false , null, undefined 구별 못함
+
+​	자료형이 같다면 그냥 해당 자료형으로 비교하면 됨
+
+`>` ,`<` 를 사용한다면 `null/undefined` 여부를 확인하는 코드를 따로 추가하는 습관을 들여야함. (형 변환으로 오류 발생)
+
+```js
+alert(0 == false); // t
+
+alert(0 == null); // f
+alert(0 == undefined); // f
+alert(0 >= null); // t
+alert(0 >= undefined); // f
+
+alert(0 == ""); // t
+alert(null == undefined); // t
+
+
+// 복습 형변환시 null - 0  undefined - NaN
+
+##과제
+
+5 > 4 // t
+"apple" > "pineapple" // f
+"2" > "12" // t
+undefined == null // t
+undefined === null // f
+null == "\n0\n" // f
+null === +"\n0\n" // f
+```
+
+<details markdown="1"> <summary>함정 피하기</summary>  <!--summary 아래 빈칸 공백 두고 내용을 적는공간--> 
+https://ko.javascript.info/comparison 팁 : 이런 예외적인 경우를 꼭 기억해 놓고 있어야만 할까요? 그렇지는 않습니다.  <br>
+    개발을 하다 보면 자연스레 이런 경우를 만나고 점차 익숙해지기 때문에 지금 당장 암기해야 할 필요는 없습니다. 하지만 아래와 같은 방법을 사용해 이런 예외 상황을 미리 예방할 수 있다는 점은 알아두시길 바랍니다.일치 연산자 ===를 제외한 비교 연산자의 피연산자에 undefined나 null이 오지 않도록 특별히 주의하시기 바랍니다.<br><br>  또한,undefined나 null이 될 가능성이 있는 변수가 >= > < <=의 피연산자가 되지 않도록 주의하시기 바랍니다. 명확한 의도를 갖고 있지 않은 이상 말이죠. 만약 변수가 undefined나 null이 될 가능성이 있다고 판단되면, 이를 따로 처리하는 코드를 추가하시기 바랍니다.
+</details>
+
+
+
+
+
+### if
+
+```js
+if(불린형으로 변환){ㄴ
+    a
+}else{
+    b
+}
+#같은코드
+(불린형으로 변환) ? a : b ;
+
+
+let message;
+
+if (login == '직원') {
+  message = '안녕하세요.';
+} else if (login == '임원') {
+  message = '환영합니다.';
+} else if (login == '') {
+  message = '로그인이 필요합니다.';
+} else {
+  message = '';
+}
+#같은 코드
+let message = (login == '직원') ? '안녕하세요.';
+(login == '임원') ? '환영합니다.';
+ (login == '') ? '로그인이 필요합니다.'; message = '';
+
+```
+
+
+
+### 논리연산자
+
+`||`는 전통적인 불린형과 자바스크립트 추가 기능형이 있다.
+
+```javascript
+//자바스크립트 추가 기능형
+result = value1 || value2 || value3;
+// 값중 true가 있으면 원래 값을 반환
+// 모두 false면 마지막 값(value3) 반환 
+# 제일 첫번째 true를 찾는 법 // 하나라도 true가 있으면 실행하므로
+# true가 없으면 마지막 값을 반환
+
+// 변수 또는 표현식으로 구성된 목록에서 첫 번째 truthy 얻기
+let firstName = "";
+let lastName = "";
+let nickName = ";
+alert( firstName || lastName || nickName || "익명"); // 익명
+
+// 단락 평가(short circuit evaluation)
+true || alert("not printed");
+false || alert("printed");
+```
+
+
+
+`&&`는 전통적인 불린형과 자바스크립트 추가 기능형이 있다.
+
+우선순위가 `||`보다 높다.
+
+```js
+result = value1 && value2 && value3;
+# 제일 첫번째 falsy를 찾는 법 // 하나라도 false가 있으면 실행하므로
+# falsy가 없으면 마지막 값을 반환
+
+a && b || c && d == (a && b) || (c && d)
+//&&의 우선순위가 더 높음
+```
+
+`if`  를 `||`나 `&&` 로 대체하지 말것! (코드의 목적에 맞게 사용해야 코드의 직관성이 높아지고 팀에 효율적임)
+
+
+
+`!(NOT)` 피연산자(NOT)를 불린형으로 변환하고 그 값을 역으로 반환.
+
+ `!(NOT)`은 논리 연산자 중에서 가장 높은 우선순위 (`!(NOT)` >  `&&` > `||`  )
+
+`!!(NOT)` 은 불린형으로 변환하는것과 동일 = `Boolean()` 
+
+```js
+#과제 
+alert( alert(1) || 2 || alert(3) ); // 1반환 
+alert( alert(1) && alert(2) );
+
+//반환과 매서드는 다르다.
+
+age(나이)가 14세 이상 90세 이하에 속하는지를 확인하는 if문을 작성하세요.
+
+age(나이)가 14세 이상 90세 이하에 속하지 않는지를 확인하는 if문을 작성하세요.
+
+if (null || -1 && 1) alert( 'third' ); 
+```
+
+답 : https://ko.javascript.info/logical-operators#ref-1157
 
