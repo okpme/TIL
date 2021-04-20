@@ -39,8 +39,6 @@
 
 ## 4. 복습부분
 
-* git push시 rejected 당할때 해결법
-  * 
 * 바탕화면에서 bash를 키면 바탕화면에서 시작
   * 폴더안에서 bash를 키면 폴더안에서 시작함
 * commit시에 확장(?) 이름을 다르게하여  push 하면??
@@ -53,6 +51,11 @@ $git init
 $git add
 $git commmit -m '제목'
 $git push -u origin master
+
+# [rejected] master -> master (fetch first) error: failed to push some refs to 해결법
+#기존데이터가 손실될수있어서 푸쉬를 막은것.
+# 강제로 푸쉬해주면 됨
+$git push origin +master 
 ```
 
 
