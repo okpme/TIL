@@ -72,15 +72,10 @@ array / queue / stack / linked list / hash table / tree / heap
 
 ```js
 ##과제
-
 let name = "Ilya";
-
 alert( `hello ${1}` ); // hello 1
-
 alert( `hello ${"name"}` ); // hello name
-
 alert( `hello ${name}` ); // hello Ilya
-
 ## ${...} 안에 표현식을 넣고 문자열을 포함한 전체를 백틱으로 감싸면, 평가된 표현식이 문자열로 반환됨.
 ```
 
@@ -103,7 +98,6 @@ result = prompt(제목, [default]);
 # IE에서는 []필수로 기본값을 써줘야함
 result = confirm(question);
 alert( isBoss ); // 확인 버튼을 눌렀다면 true가 출력됩니다.
-
 ##과제
 let hi = prompt('이름이 뭔가요',0);
 alert(hi);
@@ -170,9 +164,9 @@ alert(hi);
   | 형변환 | x (용도가 아님) | o          | o            |      |
   | 소수점 | 내림            | 내림(버림) |              |      |
 
-  
 
-  
+
+
 
 - 뺄셈 연산자 `-`,
 
@@ -190,13 +184,9 @@ alert(hi);
 
 ```js
 let a, b, c;
-
 a = b = c = 2 + 2; //a, b , c = 4
-
 a += b // 8
 c *= a // 32
-
-
 ```
 
 
@@ -214,18 +204,13 @@ c *= a // 32
 ```js
 let counter = 1;
 alert( 2 * counter++ ); // counter++는 '기존'값을 반환하기 때문에 2가 출력됩니다.
-
 //==
-
 let counter = 1;
 alert( 2 * counter );
 counter++;
-
 //'코드 한 줄엔, 특정 동작 하나’에 관련된 내용만 작성하는 게 좋다.
-
 let a = "1"; // prompt("덧셈할 첫 번째 숫자를 입력해주세요.", 1);
 let b = "2"; // prompt("덧셈할 두 번째 숫자를 입력해주세요.", 2);
-
 alert(a + b); // 12 prompt는 문자열로 반환하기때문에
 alert(+a + +b); // 3
 ```
@@ -245,20 +230,14 @@ alert(+a + +b); // 3
 
 ```js
 alert(0 == false); // t
-
 alert(0 == null); // f
 alert(0 == undefined); // f
 alert(0 >= null); // t
 alert(0 >= undefined); // f
-
 alert(0 == ""); // t
 alert(null == undefined); // t
-
-
 // 복습 형변환시 null - 0  undefined - NaN
-
 ##과제
-
 5 > 4 // t
 "apple" > "pineapple" // f
 "2" > "12" // t
@@ -287,10 +266,7 @@ if(불린형으로 변환){ㄴ
 }
 #같은코드
 (불린형으로 변환) ? a : b ;
-
-
 let message;
-
 if (login == '직원') {
   message = '안녕하세요.';
 } else if (login == '임원') {
@@ -304,15 +280,9 @@ if (login == '직원') {
 let message = (login == '직원') ? '안녕하세요.';
 (login == '임원') ? '환영합니다.';
  (login == '') ? '로그인이 필요합니다.'; message = '';
-
 ```
-
-
-
 ### 논리연산자
-
 `||`는 전통적인 불린형과 자바스크립트 추가 기능형이 있다.
-
 ```javascript
 //자바스크립트 추가 기능형
 result = value1 || value2 || value3;
@@ -320,56 +290,35 @@ result = value1 || value2 || value3;
 // 모두 false면 마지막 값(value3) 반환 
 # 제일 첫번째 true를 찾는 법 // 하나라도 true가 있으면 실행하므로
 # true가 없으면 마지막 값을 반환
-
 // 변수 또는 표현식으로 구성된 목록에서 첫 번째 truthy 얻기
 let firstName = "";
 let lastName = "";
 let nickName = ";
 alert( firstName || lastName || nickName || "익명"); // 익명
-
 // 단락 평가(short circuit evaluation)
 true || alert("not printed");
 false || alert("printed");
 ```
-
-
-
 `&&`는 전통적인 불린형과 자바스크립트 추가 기능형이 있다.
-
 우선순위가 `||`보다 높다.
-
 ```js
 result = value1 && value2 && value3;
 # 제일 첫번째 falsy를 찾는 법 // 하나라도 false가 있으면 실행하므로
 # falsy가 없으면 마지막 값을 반환
-
 a && b || c && d == (a && b) || (c && d)
 //&&의 우선순위가 더 높음
 ```
-
 `if`  를 `||`나 `&&` 로 대체하지 말것! (코드의 목적에 맞게 사용해야 코드의 직관성이 높아지고 팀에 효율적임)
-
-
-
 `!(NOT)` 피연산자(NOT)를 불린형으로 변환하고 그 값을 역으로 반환.
-
  `!(NOT)`은 논리 연산자 중에서 가장 높은 우선순위 (`!(NOT)` >  `&&` > `||`  )
-
 `!!(NOT)` 은 불린형으로 변환하는것과 동일 = `Boolean()` 
-
 ```js
 #과제 
 alert( alert(1) || 2 || alert(3) ); // 1반환 
 alert( alert(1) && alert(2) );
-
 //반환과 매서드는 다르다.
-
 age(나이)가 14세 이상 90세 이하에 속하는지를 확인하는 if문을 작성하세요.
-
 age(나이)가 14세 이상 90세 이하에 속하지 않는지를 확인하는 if문을 작성하세요.
-
 if (null || -1 && 1) alert( 'third' ); 
 ```
-
 답 : https://ko.javascript.info/logical-operators#ref-1157
-
