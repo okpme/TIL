@@ -81,7 +81,7 @@ alert( `hello ${"name"}` ); // hello name
 
 alert( `hello ${name}` ); // hello Ilya
 
-# ${...} 안에 표현식을 넣고 문자열을 포함한 전체를 백틱으로 감싸면, 평가된 표현식이 문자열로 반환됩니다.
+## ${...} 안에 표현식을 넣고 문자열을 포함한 전체를 백틱으로 감싸면, 평가된 표현식이 문자열로 반환됨.
 ```
 
 
@@ -90,13 +90,14 @@ alert( `hello ${name}` ); // hello Ilya
 
 `alert` 매서드는 값을 반환하지는 않는다.  = `undefined`
 
-`prompt` 
+`prompt`  출력한 값을 반환함.  / 출력을 안하면 undefined가 나옴
 
 `confirm`
 
 ```js
 alert("Hello");
 result = prompt(제목, [default]);
+ 		prompt("Test",''); (IE생각해서 이렇게 쓰는게 맞음)
 #인수를 []로 감싸면 매개변수가 필수가 아님, 쓰고싶으면 쓰면 됨.
 # [default] == placeholder같은 초깃값
 # IE에서는 []필수로 기본값을 써줘야함
@@ -104,7 +105,7 @@ result = confirm(question);
 alert( isBoss ); // 확인 버튼을 눌렀다면 true가 출력됩니다.
 
 ##과제
-let hi = prompt('이름이 뭔가요',['이름이 뭔가요?']);
+let hi = prompt('이름이 뭔가요',0);
 alert(hi);
 ```
 
@@ -232,12 +233,9 @@ alert(+a + +b); // 3
 
 
 ### 비교 연산자
-
-#### 불린형으로 반환  (문자열은 항상 true)
-
-`	==` 은 형변환이 없음
-
 #### 문자열 비교 (유니코드 순)
+#### 전체가 불린형으로 반환  (문자열은 항상 true)
+동등 비교 연산자 `==`는 (예시에서 문자열 `"0"`을 숫자 `0`으로 변환시킨 것처럼) 피연산자를 숫자형으로 바꾸지만, 'Boolean’을 사용한 명시적 변환에는 다른 규칙이 사용되기 때문입니다.
 
 #### 자료형이 다르면 숫자형으로 변환 >>  0과 false , null, undefined 구별 못함
 
