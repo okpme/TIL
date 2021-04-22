@@ -299,8 +299,11 @@ alert( firstName || lastName || nickName || "익명"); // 익명
 true || alert("not printed");
 false || alert("printed");
 ```
+
+
 `&&`는 전통적인 불린형과 자바스크립트 추가 기능형이 있다.
 우선순위가 `||`보다 높다.
+
 ```js
 result = value1 && value2 && value3;
 # 제일 첫번째 falsy를 찾는 법 // 하나라도 false가 있으면 실행하므로
