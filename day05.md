@@ -73,6 +73,29 @@ user[key] =false;
 alert(user[key]); //false
 
 
+// 대괄호로 객체 표현하는법 *
+// 대괄호로 객체 표현하는법
+let user = {};
+// set, change 
+user["likes birds"] = true;
+// get
+alert(user["likes birds"]); // true
+// delete
+delete user["likes birds"];
+
+
+// ex)
+let y = {};
+console.log(y); // {}
+
+y['a'] = 'ss'; // { a : ss }
+y['0'] = 1;
+console.log(y); // {'0' : 1, a : 'ss' }
+
+y['0'] = y['0'] + 1;
+console.log(y['0']); // 2
+
+
 const player = {
    name: "John"
 }
@@ -107,6 +130,7 @@ alert(user.name); // John
 
 
 ==
+    
 function makeUser(name, age) {
   return {
     name, // name: name 과 같음
