@@ -27,7 +27,7 @@ https://www.youtube.com/watch?v=T7y6Hl0YZ14&list=PLv2d7VI9OotSyQ6RPdytiHID5Cmnv_
 
 제너레이터와 이터레이터
 
-
+이터레이터 (iterater 셀수있는 요소들을 말함)
 
 제너레이터 
 
@@ -101,7 +101,7 @@ for (let char of "Hello") {
 
 trailing 쉼표 (마지막에 쉼표로 끝내는것)  // 현재 습관 만들었음!
 
-**배열의 본질은 객체**
+**배열의 본질은 객체***
 
 그래서 원시 자료형이 아닌 객체형에 속하기 때문에 객체처럼 동작 **(reference  type)**
 
@@ -114,6 +114,8 @@ unshift,shift는 느림
 배열을 반복할땐 for (let key of obj)로 하자
 
  객체형은 for...in 가능 그러므로 배열도 가능.
+
+
 
 반복문 `for in` 과 `for of` 차이점  **다시 정리**
 
@@ -152,7 +154,7 @@ let arr = [ '사과', { name: '이보라' }, true, function() { alert('안녕하
 
 `arry.from`
 
-arry.from은 이터러블이나 유사배열을 진짜 `array`로 만들어줌.
+arry.from은 이터러블이나 유사배열을 진짜 `array`로 만들어줌.*
 
 `Array.from`엔 ‘매핑(mapping)’ 함수를 선택적으로 넘겨줄 수 있다고 함.
 
@@ -193,6 +195,12 @@ arry.from은 이터러블이나 유사배열을 진짜 `array`로 만들어줌.
 맵은 키를 객체로 허용함
 
 **Map 자료형은 자료의 연관성을 표현하기 위해 쓰기 때문에 화살표로 표현!**
+
+**맵은 삽입 순서를 기억합니다.**
+
+`맵`은 `배열`과 유사하게 내장 메서드 `forEach`도 지원
+
+
 
 객체를 키로 사용할 수 있다는 점은 `맵`의 가장 중요한 기능 중 하나입니다. `객체`에는 문자열 키를 사용할 수 있습니다. 하지만 객체 키는 사용할 수 없습니다.
 
