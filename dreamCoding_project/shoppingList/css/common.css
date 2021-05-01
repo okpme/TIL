@@ -1,0 +1,60 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+*::selection {
+	background: rgba(183, 187, 199);
+	color: #fff;
+}
+html, body{
+	font: 14px 'Notosans', sans-serif;
+	color: #000;
+}
+h1, h2, h3, h4, h5, h6{
+	font-size: 1.0rem;
+	font-weight: normal;
+}
+strong, b{
+	font-weight: normal;
+}
+em, i, address{
+	font-style: normal;
+}
+img, a, label, ul, li{
+	display: block;
+	border: none;
+}
+fieldset, input, select, textarea, button{
+	border: none;
+	background: transparent;
+	border-radius: none;
+	outline: none;
+}
+legend{
+	display: none;
+}
+ul, ol, li{
+	list-style: none;
+}
+sup {
+	vertical-align: super;
+	font-size: smaller;
+}
+
+a{
+	text-decoration: none;
+	color: #000;
+}
+a:hover{
+	text-decoration: underline;
+}
+
+.skip, .blind{
+	display: block;
+	height: 0;
+	overflow: hidden;
+
+	position: absolute;
+	top: -6000px;
+}
