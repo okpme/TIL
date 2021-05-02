@@ -119,6 +119,10 @@ unshift,shift는 느림
 
 반복문 `for in` 과 `for of` 차이점  **다시 정리**
 
+- for와 for...in은 index 를 반환하고, for...of와 forEach는 값을 반환한다.
+- for...in은 객체에서 사용하고, for...of는 배열에서 사용한다.
+- 속도는 for문이 가장 빠르다.
+
 `for...in` 
 
 `Object.getOwnPropertyDescriptor(obj, 'key')`로 
