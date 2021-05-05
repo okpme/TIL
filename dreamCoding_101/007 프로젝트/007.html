@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <img src="http://placehold.it/320x100" alt="">
+    <div class="main_wrap">
+
+        <img src="" alt="">
+        <p>x,yhihi</p>
+        <div></div>
+    </div>
+    <p>x,y</p>
+    <script>
+        const img = document.querySelector('img[src="http://placehold.it/320x100"]');
+        console.log(img);
+        const pMain = document.querySelector('.main_wrap > p')
+
+        const div =document.querySelector('.main_wrap');
+        const h2 = document.createElement('h2');
+        h2.setAttribute('class', 'main');
+        h2.textContent = 'this is main';
+        // div.append(h2);
+        // div.appendChild(h2);
+        div.insertBefore(h2, pMain);
+
+    </script>
+</body>
+</html>

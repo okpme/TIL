@@ -1,0 +1,55 @@
+*,body{
+    margin:0;
+    padding: 0;
+}
+#bg{
+    width:100%;
+    height:100vh;
+    background-image: url(../images/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+}
+
+
+button#controller{
+    width: 5%;
+    height: 5%;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+}
+
+div#time{
+    width: 5%;
+    height: 5%;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    background-color: darkgoldenrod;
+    text-align: center;
+}
+
+button.bug,
+button.carrot{
+    background-color: transparent;
+    border: none;
+}
+
+button.bug{
+    position: absolute;
+    top: 50%;
+    left: 80%;
+    transform: translate(-100%, -100%);
+}
+
+
+button.carrot{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-100%, -100%);
+}
+

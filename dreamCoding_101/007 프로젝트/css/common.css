@@ -1,0 +1,70 @@
+
+/* FONT */
+@font-face {
+    font-family: 'S-CoreDream-3Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-3Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+*::selection {
+	background: rgb(56, 71, 114);
+	color: #fff;
+}
+html, body{
+	font: 14px 'S-CoreDream-3Light', sans-serif;
+	color: #000;
+}
+
+h1, h2, h3, h4, h5, h6{
+	font-size: 1.0rem;
+	font-weight: normal;
+}
+strong, b{
+	font-weight: normal;
+}
+em, i, address{
+	font-style: normal;
+}
+img, a, label, ul, li, span{
+	display: block;
+	border: none;
+}
+fieldset, input, select, textarea{
+	border: none;
+	background: transparent;
+	border-radius: none;
+	outline: none;
+}
+legend{
+	display: none;
+}
+ul, ol, li{
+	list-style: none;
+}
+sup {
+	vertical-align: super;
+	font-size: smaller;
+}
+
+a{
+	text-decoration: none;
+	color: #000;
+}
+a:hover{
+	text-decoration: none;
+}
+
+.skip, .blind{
+	display: block;
+	height: 0;
+	overflow: hidden;
+
+	position: absolute;
+	top: -6000px;
+}
