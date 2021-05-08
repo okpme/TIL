@@ -297,13 +297,56 @@ add(5); //내부 렉시컬
 
 ## 모던  JavaScript 튜토리얼 (코어 자바스크립트)
 
+게터, 세터
 
+```js
+'use strict';
+
+let 선언한사람 = {
+    name : 'kyun',
+    age : '30',
+    nextAge(){
+        return this.age + 1;
+    },
+    get getAge(){
+        return parseInt(this.age);
+    },
+
+    set setAge(value){
+        this.age = parseInt(value);
+    },
+
+}
+
+class 클래스사람 {
+    constructor(){
+        this.name = 'kyun';
+        this.age = 20;
+    }
+
+    get getAge(){
+        return this.age += 1; 
+    }
+
+    set setAge(value){
+        this.age = parseInt(value);
+    }
+}
+
+let 클래스자식 = new 클래스사람();
+```
+
+
+
+
+
+## 프론트엔드 개발자를 위한 자바스크립트 프로그래밍 책
 
 ### 참조타입 (REFERENCE TYPE)
 
 #### 객체
 
-#### 배열(Array)
+#### 배열(Array)	
 
 의   메소드
 
@@ -311,9 +354,15 @@ add(5); //내부 렉시컬
 
 #### Function 타입
 
-`오버로딩` 자바스크립트에는 사실 없는 개념
 
-`오버라이딩` 자바스크립트 객체의 상속받은 부모의 메소드를 재정의하는 것을 의미합니다
 
-##  Web APIs (드림코딩 브라우저 101) 
+함수표현식 =/ 함수선언식
+
+
+
+클로저는 다른 함수안에서 정의된 함수. 외부 함수의 변수에 접근가능함
+
+일반적으로 함수가 실행을 마치면 스코프와  그에 담긴 변수전체가 파괴되지민
+
+클로저를 반환했다면 해당 함수의  스코프 및 그에 담긴 변수는 메모리에 존재함
 
