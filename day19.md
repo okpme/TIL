@@ -148,29 +148,133 @@ let newScope = (function () {
 
 
 
+### **실행 컨텍스트**와 **클로저**
 
+모던  JavaScript 튜토리얼 사이트에서 공부했듯이, 컨텍스트란 **문맥**이다. 코드의 실행 환경이다.
 
-**실행 컨텍스트**와 **클로저**
+실행 컨텍스트를 알면 클로저와 호이스팅을 분석 할 수 있다.
 
-모던  JavaScript 튜토리얼 사이트에서 공부했듯이, 컨텍스트란 문맥이다. 코드의 실행 환경이다.
+**전역 컨텍스트**는 로딩이 완료되면 모든 것을 포함해서 생생됨. 모든 것을 관리하는 환경. 페이지가 종료될 때까지 유지됩니다.
 
-실행 컨텍스트를 알면 클로저와 호이스팅을 분석 할 수 있다. ()
+**함수 컨텍스트** 함수를 호출할 때마다 함수 컨텍스트가 더 생김
 
-**전역 컨텍스트**가 실행
-
-**함수 컨텍스트** 함수를 호출할 때마다 함수 컨텍스트가 하나씩 더 생김
-
-
-
-- 먼저 전역 컨텍스트 하나 생성 후, 함수 호출 시마다 컨텍스트가 생깁니다.
-- 컨텍스트 생성 시 컨텍스트 안에 **변수객체**(**arguments, variable), scope chain, this**가 생성됩니다.
-- 컨텍스트 생성 후 함수가 실행되는데, 사용되는 변수들은 변수 객체 안에서 값을 찾고, 없다면 스코프 체인을 따라 올라가며 찾습니다.
-- 함수 실행이 마무리되면 해당 컨텍스트는 사라집니다.(클로저 제외) 페이지가 종료되면 전역 컨텍스트가 사라집니다.
+- 먼저 **전역 컨텍스트** 하나 생성 후, 함수 호출 시마다 **컨텍스트**가 생긴다.
+- 컨텍스트 생성 시 컨텍스트 안에 **1. 변수객체**(**arguments, variable), 2. scope chain, 3. this**가 생성된다.
+- 컨텍스트 생성 후 함수가 실행되는데, 사용되는 변수들은 변수 객체 안에서 값을 찾고, 없다면 스코프 체인을 따라 올라가며 찾는다.
+- 함수 실행이 마무리되면 함수 컨텍스트는 파괴되고, (클로저 제외), 페이지가 종료되면 전역 컨텍스트가 사라진다.
 
 ```js
+var name = 'zero'; // (1)변수 선언 (6)변수 대입
+function wow(word) { // (2)변수 선언 (3)변수 대입 // 호이스팅때문에 선언과 동시에 
+  console.log(word + ' ' + name); // (11)
+}
+function say () { // (4)변수 선언 (5)변수 대입
+  var name = 'nero'; // (8)
+  console.log(name); // (9)
+  wow('hello'); // (10)
+}
+say(); // (7)
+```
+
+위의 코드를 보면
+
+전역 컨텍스트는 
+
+arguments는 없고, variable은 'name','say','wow'이다.  (say, wow는 호이스팅으로 포함됨.)
+
+this는 초기값이 window이다.
+
+scope chain은 자신과 상위 스코프들의 변수객체이다. (여기서는 전역변수객체 본인 자체.)
+
+
+
+`Say();` 가 실행되면, 함수 컨텍스트가 생성된다.
+
+arguments는 없고, variable은 'name'이다.
+
+this는 초기값이 window이다.
+
+ scopeChain은 자기자신과 전역 변수객체이다. `  scope chain : ['say 변수객체', '전역 변수객체'],`
+
+name은 nero가 되고, wow 함수를 찾기 위해, 스코프체인으로 전역 변수객체로 이동하여, wow를 찾는다.
+
+
+
+wow함수는 이미 렉시컬 스코핑으로 인해 선언시 스코프가 만들어진다.
+
+여기서의 name은 그러므로 zero임.
+
+
+
+### 호이스팅
+
+잘 알고 있는 내용
+
+
+
+### 클로저
+
+클로저를 안다는건, 컨텍스트랑 렉시컬 스코핑이랑, 비공개 변수를 활용할줄 안다. 라고 생각하면 된다.
+
+```js
+var makeClosure = function() {
+  var name = 'zero';
+  return function () {
+    console.log(name);
+  }
+};
+var closure = makeClosure(); // function () { console.log(name); }**
+closure(); // 'zero';
 ```
 
 
+
+`전역 컨텍스트`
+
+arguments 없음, 변수객체 `makeClosure : function` , `closure`
+
+스코프체인 - [전역 변수 객체]
+
+`makeClosure 함수 컨텍스트 `
+
+arguments 없음, 변수객체  `name``
+
+스코프체인 - [전역 변수 객체, makeClosure 변수 객체]
+
+```js
+"전역 컨텍스트": {
+  변수객체: {
+    arguments: null,
+    variable: [{ makeClosure: Function }, 'closure'],
+  },
+  scopeChain: ['전역 변수객체'],
+  this: window,
+}
+"makeClosure 컨텍스트": {
+  변수객체: {
+    arguments: null,
+    variable: [{ name: 'zero' }],
+  },
+  scopeChain: ['makeClosure 변수객체', '전역 변수객체'],
+  this: window,
+}
+
+"closure 컨텍스트":  {
+  변수객체: {
+    arguments: null,
+    variable: null,
+  scopeChain: ['closure 변수객체', 'makeClosure 변수객체', '전역 변수객체'],
+  this: window,
+}
+```
+
+```tex
+주목할 점은 `closure = makeClosure()`할 때의 상황입니다. function을 return하는데 그 function 선언 시의 **scope chain**은 lexical scoping을 따라서 `['makeClosure 변수객체', '전역 변수객체']`를 포함합니다. 따라서 closure을 호출할 때 컨텍스트는 다음과 같습니다.
+
+이런 방식으로 **비공개 변수**를 만들어 활용할 수 있습니다. 비공개 변수이기 때문에 남들이 조작할 걱정은 없죠. 프로그램 사용자는 여러분이 공개한 메소드만 사용해야합니다. 사용자가 예상을 뒤엎는 행동을 하는 것을 막을 수 있죠. 꼭 알아두어야 할 점은 절대로 사용자를 믿어서는 안됩니다. 무슨 짓을 할 지 모르거든요. 해킹을 시도할 수도 있고, 프로그램에 버그를 만들 수도 있습니다. 특히 서버와 연결되어 있는 경우는 더 조심해야하죠. 그렇기때문에 항상 사용자가 할 수 있는 모든 행동과 일어날 수 있는 경우의 수를 통제하고 있어야합니다. 
+=======
+
+```
 
 ## 모던  JavaScript 튜토리얼 (코어 자바스크립트)
 
