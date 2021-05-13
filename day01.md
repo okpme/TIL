@@ -54,7 +54,7 @@
 
 `브랜치` : 독립된 작업공간
 
-`master`  : $git init시 default 퇴는 것이 'master'
+`master`  : $git init시 default 퇴는 것이 'master' (로컬저장소)
 	예) git -u origin master
 
 
