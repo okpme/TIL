@@ -25,6 +25,21 @@
 
 와 깃 깃똥차게 어렵네
 
+git config 설정 확인 및 변경하기
+
+```tex
+git config user.name "유저이름"
+git config user.email "유저이메일""
+git config --global user.email "유저이메일"
+
+git config --list
+
+git config --unset user.email
+git config --unset --global user.email
+```
+
+
+
 ## 모던  JavaScript 튜토리얼 (코어 자바스크립트)
 
 
