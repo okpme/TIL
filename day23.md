@@ -63,11 +63,11 @@ let user = { name : 'kyun' },
   }
 
   console.log(user);
-
-
 ```
 
 
+
+### 상속 prototype
 
 ```js
 const car = {
@@ -115,7 +115,7 @@ const Car = function(color){
     this.from = 'germany';
 }
 
-Car.prototype = {
+Car.prototype = { 
     constructor : Car, // 생성자는 명확하게 표현되지는 않음
     wheel : 4,
     drive(){
@@ -132,9 +132,90 @@ const x7 = new Car('black');
 
 console.log(x5 instanceof Car);
 console.log(x7.constructor === Car);
+
+
+//연습
+
+const IceCream = function(brand){
+    this.position = 'desert';
+    this.brand = brand;
+};
+
+IceCream.prototype = {
+    constructor : IceCream,
+    need : ['refrigrator','spoon'],
+}
+
+const HagenDez = new IceCream('HagenDez');
+
+console.log(HagenDez.constructor === IceCream);
+console.log(HagenDez instanceof IceCream);
 ```
 
 
+
+### class , (extends)
+
+```js
+// 클래스로 표현, extends
+// 메소드 오버라이딩
+// 클래스 오버라이딩
+
+class IceCream {
+    constructor(color, brand){
+        this.color = color;
+        this.brand = brand;
+    }
+    sayDelicious(){
+        console.log('ummm.. delicious');
+    }
+
+}
+
+const hagenDaz = new IceCream('white','hagenDaz');
+
+
+class Choco extends IceCream {
+    //constructor(...args){  // choco를 복사하면, 기본값으로 이게 생성된다. 
+        //super(...args); //자식생성자는 무조건 부모생성자를 호출해야한다.
+    //}
+    constructor(color,brand){
+        super(color,brand);
+        this.old = '1829';
+    }
+    sayHi(){
+        console.log(`hello Choco`);
+        super.sayDelicious();
+    }
+} 
+
+const gana = new Choco('brown','gana');
+```
+
+
+
+### `promise(res,rej)` `promise.all`  `async await`
+
+```js
+'use strict';
+
+function getName(name){
+    console.log(name);
+    return new Promise((res,rej) => {
+        setTimeout(() => {
+            res(name)
+        }, 1000);
+    });
+}
+
+async function sayHi() {
+    const result = await getName('kyun');
+    console.log(result);
+}
+
+
+sayHi();
+```
 
 ##  드림코딩 브라우저 101 (잠시중지)
 
