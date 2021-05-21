@@ -133,10 +133,7 @@ export default function World() {
   
 ```
 
-![스크린샷 2021-05-19 오후 1.37.16](/Users/kyun-workshop/Desktop/스크린샷 2021-05-19 오후 1.37.16.png)
-
 
 
 
 ##  드림코딩 브라우저 101 (잠시중지)
-
