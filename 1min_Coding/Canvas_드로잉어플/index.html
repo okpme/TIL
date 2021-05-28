@@ -42,15 +42,25 @@
     .color-btn[data-color="red"]{ background :red}
     .color-btn[data-color="blue"]{background :blue}
     .color-btn[data-color="orange"]{background :orange}
+    .image-btn{
+        width: 40px; height: 40px; 
+        background: url(images.png) no-repeat 50% 50% /cover; 
+    }
+
+    .result-image {
+    }
 </style>
 <body>
 
     <canvas class ="canvas"  width="1000px" height="600">drawing sth</canvas>
 
     <div class="control">
-        <button class= 'color-btn' data-color = "red"></button>
-        <button class= 'color-btn' data-color = "blue"></button>
-        <button class= 'color-btn' data-color = "orange"></button>
+        <button class= 'color-btn' data-type = "color" data-color = "red"></button>
+        <button class= 'color-btn' data-type = "color" data-color = "blue"></button>
+        <button class= 'color-btn' data-type = "color" data-color = "orange"></button>
+        <button class= 'image-btn' data-type = "image"></button>
+        <button class="saveBtn"></button>
+        <div class="result-image"></div>
     </div>
 
     <script defer src="js/test2.js"></script>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습용</title>
+</head>
+<style>
+    .selected{
+        background-color: yellow;
+    }
+
+    li{
+        display: block;
+        width: 100px;
+        height: 200px;
+        background-color: #dedede;
+        margin: 20px 0;
+    }
+
+    .canvas{
+        display:block;
+        width: 1000px;
+        height: 600px;
+        background: #eee;
+        margin: 50px auto;
+    }
+
+    .control{
+        display: flex;
+        justify-content:center;
+    }
+    button{
+        width: 40px;
+        height: 40px;
+        margin: 20px 20px;
+        border-radius: 50%;
+        border: none;
+    }
+
+    .color-btn[data-color="red"]{ background :red}
+    .color-btn[data-color="blue"]{background :blue}
+    .color-btn[data-color="orange"]{background :orange}
+    .image-btn{
+        width: 40px; height: 40px; 
+        background: url(images.png) no-repeat 50% 50% /cover; 
+    }
+
+    .result-image {
+    }
+</style>
+<body>
+
+    <canvas class ="canvas"  width="1000px" height="600">drawing sth</canvas>
+
+    <div class="control">
+        <button class= 'color-btn' data-type = "color" data-color = "red"></button>
+        <button class= 'color-btn' data-type = "color" data-color = "blue"></button>
+        <button class= 'color-btn' data-type = "color" data-color = "orange"></button>
+        <button class= 'image-btn' data-type = "image"></button>
+        <button class="saveBtn"></button>
+        <div class="result-image"></div>
+    </div>
+
+    <script src="js/uility.js"></script>
+    <script src="js/box.js"></script>
+    <script src="js/pannel.js"></script>
+    <script>
+'use strict';
+
+const canvas = document.querySelector('.canvas');
+const ctx = canvas.getContext("2d");
+const boxes = [];
+const mousePos = {x:0, y:0};
+let panel;
+let selectedBox; //클릭된 박스
+ctx.font = 'bold 30px sans-serif';
+
+let oX;
+let oY;
+let step = 1;
+
+let requestAnimationFrameID;
+
+//렌더링
+function render(){
+
+    // 랜덤 5개 X값만 바꿈
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    let box;
+    for(let i =0; i< boxes.length; i++){
+        box = boxes[i];
+        // box.x += box.speed; //랜덤 속도 && 이동거리
+        // if(box.x > canvas.width){ //  X 화면 이탈시 다시 생성
+        //     box.x = -box.width;
+        // }
+        // if(box.y > canvas.height){ // Y 화면 이탈시 다시 생성
+        //     box.y = -box.height;
+        // }
+        box.draw();
+    }
+    switch (step) {
+        case 1:
+            for(let i =0; i< boxes.length; i++){
+                box = boxes[i];
+                box.x += box.speed; //랜덤 속도 && 이동거리
+                if(box.x > canvas.width){ //  X 화면 이탈시 다시 생성
+                    box.x = -box.width;
+                }
+                if(box.y > canvas.height){ // Y 화면 이탈시 다시 생성
+                    box.y = -box.height;
+                }
+            }
+            break;
+    
+        case 2:
+            // panel.scale += 0.02;
+            // 현재크기 = 현재크기 + (목표크기 - 현재크기)* 0.1
+            panel.scale = panel.scale + (1 - panel.scale)* 0.07;
+
+            panel.angle = panel.scale * 727;
+
+            panel.draw();
+            if(panel.scale >= 0.99){
+                panel.scale = 1;
+                step =3;
+            }
+            break;
+
+        case 3:
+        panel.draw();
+        panel.showContent();
+            break;
+    }
+
+    // 랜덤 5개 Y값만 바꿈
+    for(let i =0; i<5; i++){ 
+        
+        tempX = Math.random() * canvas.width * 0.8;
+        // boxes[i].x = tempX;
+        boxes[i].y += box.speed;
+    }
+
+    // panel.draw();
+    requestAnimationFrameID = requestAnimationFrame(render);
+    // console.log(requestAnimationFrameID);
+
+    if(step === 3){
+        cancelAnimationFrame(requestAnimationFrameID)
+    }
+}
+
+//랜덤 생성
+let tempX,tempY,tempSpeed,index;
+
+function init(){
+    oX = canvas.width / 2;
+    oY = canvas.height / 2;
+
+    for(let i =0; i<10; i++){ 
+        tempX = Math.random() * canvas.width * 0.8;
+        tempY = Math.random() * canvas.height * 0.8;
+        tempSpeed = Math.random() * 4 + 1; // 1 ~ 5 속도
+
+        boxes.push(new Box(i,tempX,tempY,tempSpeed));
+    }
+
+    panel = new Panel();
+    render();
+}
+
+//클릭시 해당 박스의 index 추출
+canvas.addEventListener('click',e =>{
+    mousePos.x = e.layerX;
+    mousePos.y = e.layerY;
+
+    let box;
+    for(let i =0; i<boxes.length; i++){
+        box = boxes[i];
+        if  (mousePos.x > box.x &&
+            mousePos.x < box.x + box.width &&
+            mousePos.y > box.y &&
+            mousePos.y < box.y + box.height){
+
+                selectedBox = box.index
+            }
+    }
+    
+    // if(selectedBox){
+    //     console.log(selectedBox);
+    //     step = 2;
+    //     // selectedBox = null;
+    // }
+
+    
+    if(step === 1 && selectedBox){
+        step =2; 
+    }else if (step === 3){
+        step = 1;
+        panel.scale = 0;
+        selectedBox = null;
+        render()
+    }
+
+});
+
+
+init();
+
+    </script>
+</body>
+</html>
