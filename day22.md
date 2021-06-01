@@ -81,9 +81,11 @@ let arr3 = ['🍇','🫐'];
 arr.concat(arr2,'🥭');
 
 
-arr.forEach(함수(요소,인덱스,arr그자체)); // arr.forEach(()=>{})
+arr.filter(콜백함수(value,index,arr그자체))
+둘이 유사
+arr.forEach(콜백함수(요소,인덱스,arr그자체)); // arr.forEach(()=>{})
 
-// 인덱스와 아이템사용으로 번호표 달기
+// 인덱스와 아이템사용(value)으로 번호표 달기
 let arr = ['🍏','🍎','🍐'];
 
 arr.forEach((item,index)=>{
@@ -96,8 +98,8 @@ arr.indexOf(n,m) // n부터 m 탐색
 arr.lastIndexOf(n,m) // 동일하게 뒤부터
 arr.includes(n) // n가 있는지 찾기
 
-arr.find(fn) //  함수로 있는지 찾기 **첫번째** true만 반환, 없을시 undefined 
-arr.findIndex(fn) //  함수로 있는지 찾기
+arr.find(fn) //  콜백함수로 있는지 찾기 **첫번째** true만 반환, 없을시 undefined 
+arr.findIndex(fn) //  콜백함수로 몇번쨰 있는지 찾기
 
 // find(함수)에 맞는 값 return 받기
 let arr = [1,2,3,4,5,6];
@@ -130,7 +132,7 @@ let result = userList.find((user)=>{
 });
 
 
-arr.filter(fn) //  함수로 있는지 찾기, find와는 다르게 모든 true값을 배열로 반환, 없을시 undefined 
+arr.filter(fn) //  함수로 있는지 찾기, find와는 다르게 모든 true값을 배열로 반환, arr에 재할당됨  없을시 undefined 
 
 //미성년자 찾기 (filter사용)
 class Obj{
@@ -187,8 +189,10 @@ let newUserList = userList.map((item,index)=>{
   })
 });
 
+
 arr.join // 배열을 합쳐서 문자열로
-arr.split // 문자열을 나눠서 배열로 만들어줌
+arr.split // 문자열(1개)을 나눠서 배열(여러개) 로 만들어줌
+
 
 
 Array.isArray() // typeof 대신 배열을 찾을때 true,false로 반환
