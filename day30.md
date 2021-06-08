@@ -69,9 +69,7 @@ function draw(){
 
 draw();
 
-
-// 클릭하면 만들어지게 하기
-
-
 ```
+
+## 1min_coding, p5_JS 폴더안에 있음
 
